@@ -1,28 +1,21 @@
-import './App.css';
+import { useState } from "react";
+import Landing from "./pages/Landing";
+import Warehouse from "./pages/Warehouse";
+import Deposit from "./pages/Deposit";
+import Lender from "./pages/Lender";
+import Loan from "./pages/Loan";
 
 function App() {
+  const [page, setPage] = useState("landing");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      {page === "landing" && <Landing setPage={setPage} />}
+      {page === "warehouse" && <Warehouse setPage={setPage} />}
+      {page === "deposit" && <Deposit setPage={setPage} />}
+      {page === "lender" && <Lender setPage={setPage} />}
+      {page === "loan" && <Loan />}
+    </>
   );
 }
 

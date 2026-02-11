@@ -16,12 +16,13 @@
     "@adobe/css-tools": "^4.3.1",
     "postcss": "^8.4.31"
   },
-  "scripts": {
-    "start": "BROWSER=none WDS_SOCKET_PORT=0 vite --port 3000",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest"
-  },
+  
+"scripts": {
+  "dev": "vite",
+  "start": "BROWSER=none WDS_SOCKET_PORT=0 vite --port 3000",
+  "build": "vite build"
+  
+},
   "eslintConfig": {
     "extends": [
       "react-app",
