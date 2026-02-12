@@ -1,20 +1,20 @@
-import { useState } from "react";
-import Landing from "./pages/Landing";
-import Warehouse from "./pages/Warehouse";
-import Deposit from "./pages/Deposit";
-import Lender from "./pages/Lender";
-import Loan from "./pages/Loan";
+import React, { useState } from "react";
+import Landing from "./pages/Landing.jsx";
+import Warehouse from "./pages/Warehouse.jsx";
+import Deposit from "./pages/Deposit.jsx";
+import Lender from "./pages/Lender.jsx";
+import Loan from "./pages/Loan.jsx";
 
 function App() {
-  const [page, setPage] = useState("landing");
+  const [page, setPage] = useState("Landing");
 
   return (
     <>
-      {page === "landing" && <Landing setPage={setPage} />}
-      {page === "warehouse" && <Warehouse setPage={setPage} />}
-      {page === "deposit" && <Deposit setPage={setPage} />}
-      {page === "lender" && <Lender setPage={setPage} />}
-      {page === "loan" && <Loan />}
+      {page === "Landing" && <Landing setPage={setPage} />}
+      {page === "Warehouse" && <Warehouse setPage={setPage} />}
+      {page === "Deposit" && <Deposit setPage={setPage} />}
+      {page === "Lender" && <Lender setPage={setPage} />}
+      {page === "Loan" && <Loan setPage={setPage} />}
     </>
   );
 }
