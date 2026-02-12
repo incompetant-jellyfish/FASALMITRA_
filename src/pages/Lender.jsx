@@ -16,7 +16,7 @@ export default function Lender({ setPage }) {
     setTimeout(() => {
       setLoading(false);
       setIsSuccess(true);
-      setTimeout(() => setPage("loan"), 3500); 
+      setTimeout(() => setPage("Loan"), 3500); 
     }, 1500);
   };
 
