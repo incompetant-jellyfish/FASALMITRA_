@@ -1,19 +1,29 @@
 import { useState } from "react";
 
 export default function Warehouse({ setPage }) {
-  // 1. Unified State (Matches Deposit logic)
+
   const [formData, setFormData] = useState({
     id: "",
-    farmerId: "F-9921", // Static for prototype
+    farmerId: "F-9921",
     crop: "Sorghum",
     quantity: ""
   });
 
-  // 2. Validation and Save Logic
+  // ✅ Crop options OUTSIDE handleSave
+  const cropOptions = [
+    { value: "Sorghum", label: "Sorghum (se)" },
+    { value: "Wheat", label: "Wheat (Grade A)" },
+    { value: "Maize", label: "Maize (Yellow)" },
+    { value: "Rice", label: "Rice (Paddy)" },
+    { value: "Barley", label: "Barley" },
+    { value: "Millet", label: "Millet" },
+    { value: "Chickpea", label: "Chickpea (Gram)" },
+    { value: "Groundnut", label: "Groundnut" },
+    { value: "Soybean", label: "Soybean" }
+  ];
+
   const handleSave = () => {
-    const inputID = formData.id.toUpperCase();
-    
-    // Rigid ID Pattern: 25 + (BCE/BAI/BAS/BCY) + 4-5 digits
+    const inputID = formData.id.trim().toUpperCase();
     const idPattern = /^25(BCE|BAI|BAS|BCY)\d{4,5}$/;
 
     if (!idPattern.test(inputID)) {
@@ -21,19 +31,28 @@ export default function Warehouse({ setPage }) {
       return;
     }
 
-    const qty = parseFloat(formData.quantity);
-    if (isNaN(qty) || qty <= 0) {
+    // ✅ Proper quantity validation
+    const qty = Number(formData.quantity);
+    if (!formData.quantity || qty <= 0) {
       alert("Please enter a valid numeric quantity.");
       return;
     }
 
-    // Save to localStorage and move to the 'deposit' verification page
-    localStorage.setItem("deposit", JSON.stringify({ ...formData, id: inputID, quantity: qty }));
+    localStorage.setItem(
+      "deposit",
+      JSON.stringify({ ...formData, id: inputID, quantity: qty })
+    );
+
     setPage("deposit");
   };
 
   const handleReset = () => {
-    setFormData({ id: "", farmerId: "F-9921", crop: "Sorghum", quantity: "" });
+    setFormData({
+      id: "",
+      farmerId: "F-9921",
+      crop: "Sorghum",
+      quantity: ""
+    });
   };
 
   return (
@@ -51,36 +70,46 @@ export default function Warehouse({ setPage }) {
       <div className="input-group">
         <div className="data-row">
           <span className="label">Deposit ID:</span>
-          <input 
-            type="text" 
+          <input
+            type="text"
             className="value-input"
-            placeholder="e.g. 25BCE1056" 
+            placeholder="e.g. 25BCE1056"
             value={formData.id}
-            onChange={(e) => setFormData({...formData, id: e.target.value.toUpperCase()})} 
+            onChange={(e) =>
+              setFormData({ ...formData, id: e.target.value.toUpperCase() })
+            }
           />
         </div>
 
         <div className="data-row">
           <span className="label">Crop Type:</span>
-          <select 
+          <select
             className="value-input"
-            value={formData.crop} 
-            onChange={(e) => setFormData({...formData, crop: e.target.value})}
+            value={formData.crop}
+            onChange={(e) =>
+              setFormData({ ...formData, crop: e.target.value })
+            }
           >
-            <option value="Sorghum">Sorghum (se)</option>
-            <option value="Wheat">Wheat (Grade A)</option>
-            <option value="Maize">Maize (Yellow)</option>
+            {cropOptions.map((crop) => (
+              <option key={crop.value} value={crop.value}>
+                {crop.label}
+              </option>
+            ))}
           </select>
         </div>
 
         <div className="data-row">
           <span className="label">Quantity (Units):</span>
-          <input 
-            type="number" 
+          <input
+            type="number"
+            min="0"
+            step="0.01"
             className="value-input"
-            placeholder="0.00" 
+            placeholder="0.00"
             value={formData.quantity}
-            onChange={(e) => setFormData({...formData, quantity: e.target.value})} 
+            onChange={(e) =>
+              setFormData({ ...formData, quantity: e.target.value })
+            }
           />
         </div>
       </div>
@@ -91,11 +120,18 @@ export default function Warehouse({ setPage }) {
         <button className="approve-btn" onClick={handleSave}>
           Generate Record
         </button>
-        
-        <button className="reset-link" onClick={handleReset} style={{ color: "#ef4444", cursor: "pointer", border: "none", background: "none" }}>
+
+        <button
+          className="reset-link"
+          onClick={handleReset}
+          style={{
+            color: "#ef4444",
+            cursor: "pointer",
+            border: "none",
+            background: "none"
+          }}
+        >
           Clear and Restart
         </button>
       </div>
     </div>
-  );
-}
