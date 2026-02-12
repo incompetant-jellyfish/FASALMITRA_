@@ -138,11 +138,11 @@ button {
 
 .checkmark-kick {
   position: absolute;
-  width: 16px;
+  width: 14px;
   height: 4px;
-  background-color: #22c55e;
-  left: 30px;
-  top: 42px;
+  background-color: #4b22c5;
+  left: 28px;
+  top: 44px;
   transform: rotate(45deg);
   border-radius: 2px;
   animation: grow 0.2s ease-out 0.2s both;

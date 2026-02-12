@@ -8,8 +8,24 @@ export default function Warehouse({ setPage }) {
     crop: "Sorghum",
     quantity: ""
   });
+    const records = [];
 
-  // ✅ Crop options OUTSIDE handleSave
+const storedDeposit = localStorage.getItem("deposit");
+if (storedDeposit) {
+  const d = JSON.parse(storedDeposit);
+  records.push({
+    date: new Date().toLocaleDateString("en-GB"),
+    crop: d.crop,
+    quantity: d.quantity
+  });
+}
+
+
+  const reliabilityScore = records.length > 0 ? 60 : 0;
+
+
+
+  
   const cropOptions = [
     { value: "Sorghum", label: "Sorghum (se)" },
     { value: "Wheat", label: "Wheat (Grade A)" },
@@ -31,17 +47,23 @@ export default function Warehouse({ setPage }) {
       return;
     }
 
-    // ✅ Proper quantity validation
+    
     const qty = Number(formData.quantity);
     if (!formData.quantity || qty <= 0) {
       alert("Please enter a valid numeric quantity.");
       return;
     }
 
-    localStorage.setItem(
-      "deposit",
-      JSON.stringify({ ...formData, id: inputID, quantity: qty })
-    );
+   localStorage.setItem(
+  "deposit",
+  JSON.stringify({
+    ...formData,
+    id: inputID,
+    quantity: qty,
+    storedAt: new Date().toISOString()
+  })
+);
+
 
     setPage("Deposit");
   };
@@ -54,18 +76,21 @@ export default function Warehouse({ setPage }) {
       quantity: ""
     });
   };
-
+  
   return (
     <div className="container">
-      <div className="progress">
-        <div className="step active">Warehouse</div>
-        <div className="step">Deposit</div>
-        <div className="step">Lender</div>
-        <div className="step">Loan</div>
-      </div>
-
+      
       <h2 className="brand-header">Fasalmitra</h2>
       <h3>Warehouse Entry</h3>
+            <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
+        <div><strong>Farmers:</strong> {records.length}</div>
+        <div><strong>Total Stored:</strong>{" "}
+        {records.reduce((sum, r) => sum + r.quantity, 0)} units
+        </div>
+        <div><strong>Active Loans:</strong> {records.length}</div>
+
+      </div>
+
 
       <div className="input-group">
         <div className="data-row">
@@ -115,6 +140,52 @@ export default function Warehouse({ setPage }) {
       </div>
 
       <hr style={{ border: "0.5px solid #e2e8f0", margin: "20px 0" }} />
+            <h4>Storage History</h4>
+
+      {records.length === 0 ? (
+  <p style={{ fontSize: "14px", color: "#475569" }}>
+    No storage records yet. Add a deposit to begin.
+  </p>
+) : (
+  <table style={{ width: "100%", marginBottom: "20px" }}>
+    <thead>
+      <tr>
+        <th align="left">Date</th>
+        <th align="left">Crop</th>
+        <th align="left">Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {records.map((r, i) => (
+        <tr key={i}>
+          <td>{r.date}</td>
+          <td>{r.crop}</td>
+          <td>{r.quantity} units</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+)}
+
+{records.length > 0 && records[0].quantity > 15 && (
+  <div      
+    style={{
+      background: "rgba(220, 38, 38, 0.12)",
+      border: "1px solid rgba(220, 38, 38, 0.3)",
+      padding: "10px",
+      borderRadius: "8px",
+      marginTop: "15px"
+    }}
+  >
+    <p style={{ color: "#7f1d1d", margin: 0 }}>
+      Alert: Large quantity of crop is currently under storage and should be monitored.
+    </p>
+  </div>
+)}
+
+
+
+
 
       <div className="button-group">
         <button className="approve-btn" onClick={handleSave}>

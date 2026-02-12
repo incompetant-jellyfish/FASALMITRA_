@@ -14,13 +14,7 @@ export default function Loan({ setPage }) {
 
   return (
     <div className="container">
-      <div className="progress">
-        <div className="step">Warehouse</div>
-        <div className="step">Deposit</div>
-        <div className="step">Lender</div>
-        <div className="step active">Loan</div>
-      </div>
-
+      
       <h2 className="brand-header">Fasalmitra</h2>
       <h2>Loan Successfully Approved</h2>
 
@@ -28,6 +22,7 @@ export default function Loan({ setPage }) {
         <p className="badge" style={{ textAlign: "center", fontWeight: "bold", color: "#024f36" }}>
           Transaction Confirmed
         </p>
+        
         
         <div className="data-row">
           <span className="label">Deposit ID:</span>
@@ -39,6 +34,16 @@ export default function Loan({ setPage }) {
           <span className="value loan-text">₹{loanAmount.toLocaleString("en-IN")}</span>
         </div>
       </div>
+      <div className="data-row">
+  <span className="label">Interest Rate:</span>
+  <span className="value">7% per annum</span>
+</div>
+
+<div className="data-row">
+  <span className="label">Repayment Period:</span>
+  <span className="value">3 months</span>
+</div>
+
 
       <p style={{ textAlign: "center", fontSize: "14px", color: "#010307" }}>
         Farmer now has liquidity and can wait for better market prices.
