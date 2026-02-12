@@ -5,7 +5,7 @@ export default function Deposit({ setPage }) {
   const d = JSON.parse(localStorage.getItem("deposit")) || { id: "N/A", crop: "N/A", quantity: 0 };
 
   const handleConfirm = () => {
-    setPage("lender"); // Move to Lender after verification
+    setPage("Lender"); 
   };
 
   return (
@@ -46,7 +46,7 @@ export default function Deposit({ setPage }) {
         <button 
           className="reset-btn" 
           style={{ background: "none", color: "#64748b", border: "1px solid #e2e8f0" }}
-          onClick={() => setPage("warehouse")}
+          onClick={() => setPage("Warehouse")}
         >
           Edit Details
         </button>
