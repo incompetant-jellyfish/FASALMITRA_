@@ -9,7 +9,7 @@ export default function Warehouse({ setPage }) {
     quantity: ""
   });
 
-  // ✅ Crop options OUTSIDE handleSave
+
   const cropOptions = [
     { value: "Sorghum", label: "Sorghum (se)" },
     { value: "Wheat", label: "Wheat (Grade A)" },
@@ -43,7 +43,7 @@ export default function Warehouse({ setPage }) {
       JSON.stringify({ ...formData, id: inputID, quantity: qty })
     );
 
-    setPage("deposit");
+    setPage("Deposit");
   };
 
   const handleReset = () => {
@@ -103,7 +103,7 @@ export default function Warehouse({ setPage }) {
           <input
             type="number"
             min="0"
-            step="0.01"
+            step="0"
             className="value-input"
             placeholder="0.00"
             value={formData.quantity}
@@ -135,3 +135,5 @@ export default function Warehouse({ setPage }) {
         </button>
       </div>
     </div>
+  );
+}
