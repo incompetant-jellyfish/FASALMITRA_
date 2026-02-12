@@ -9,7 +9,7 @@ export default function Warehouse({ setPage }) {
     quantity: ""
   });
 
-
+  // ✅ Crop options OUTSIDE handleSave
   const cropOptions = [
     { value: "Sorghum", label: "Sorghum (se)" },
     { value: "Wheat", label: "Wheat (Grade A)" },
