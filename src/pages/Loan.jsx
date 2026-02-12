@@ -3,13 +3,13 @@ import "../App.css";
 export default function Loan({ setPage }) {
   
   const d = JSON.parse(localStorage.getItem("deposit")) || { id: "N/A", quantity: 0 };
-  const loanAmount = d.quantity * 2000 * 0.7;
+  const loanAmount = d.quantity * 2000 * 0.45;
 
   const handleExit = () => {
     
     localStorage.removeItem("deposit"); 
     
-    setPage("landing"); 
+    setPage("Landing"); 
   };
 
   return (
@@ -44,7 +44,7 @@ export default function Loan({ setPage }) {
         Farmer now has liquidity and can wait for better market prices.
       </p>
 
-      {/* FIXED: The Exit Button */}
+     
       <button 
         className="reset-btn" 
         style={{ background: "#7d44ef", color: "white", marginTop: "20px" }} 

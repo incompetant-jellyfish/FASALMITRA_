@@ -25,11 +25,11 @@ export default function Lender({ setPage }) {
       <h1 className="brand-header">Fasalmitra</h1>
       
       {isSuccess ? (
-  <div className="success-container"> {/* Matches your CSS .success-container */}
+  <div className="success-container"> 
     <div className="checkmark-wrapper">
       <div className="checkmark-circle"></div>
-      <div className="checkmark-kick"></div> {/* Matches your CSS .checkmark-kick */}
-      <div className="checkmark-stem"></div> {/* Matches your CSS .checkmark-stem */}
+      <div className="checkmark-kick"></div> 
+      <div className="checkmark-stem"></div> 
     </div>
     <h2 className="success-text fade-in">Loan Approved!</h2>
     <p className="fade-in">Transferring funds to your account...</p>
@@ -42,7 +42,7 @@ export default function Lender({ setPage }) {
           
           <div className="data-row">
             <span className="label">Deposit ID:</span>
-            {/* FIXED: Using d.id here */}
+            
             <span className="value">{d.id}</span>
           </div>
 
