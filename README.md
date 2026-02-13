@@ -1,51 +1,58 @@
 #  FasalMitra – Prototype
 
-FasalMitra is a front-end prototype that demonstrates how warehouse-stored crops can be digitally recorded and used to simulate post-harvest loan approval.
+FasalMitra is a front-end prototype demonstrating the workflow of a digital crop deposit and post-harvest loan approval system.
 
-This version is a proof-of-concept built to demonstrate system flow between:
-
-- Warehouse / FPO
-- Digital Crop Deposit Record
-- Lender
-- Loan Confirmation
+This repository contains the complete website files used to demonstrate the concept.  
+The website was developed collaboratively as part of a team project.
 
 ---
 
-##  What This Prototype Shows
+##  Live Prototype
 
-This project demonstrates:
-
-- Crop entry by warehouse staff
-- Generation of a digital deposit record
-- Warehouse stock summary page
-- Lender dashboard view
-- Loan approval confirmation
-
-The goal is to simulate how stored agricultural produce can be treated as a verified digital asset.
+[View Live Website](https://fasalmitra-prototype.netlify.app/)
 
 ---
 
-##  Prototype Flow
+##  Demo Video
 
-1. **Warehouse Entry (`warehouse.html`)**
-   - Staff enters Farmer ID, Crop Type, Quantity, and Quality.
-   - A unique Deposit ID is generated.
-
-2. **Deposit Record (`deposit.html`)**
-   - Displays digital crop deposit details.
-   - Shows verification status.
-
-3. **Warehouse Stock View (`stock.html`)**
-   - Shows stored quantity in warehouse.
-   - Indicates availability for pledge.
-
-4. **Lender Dashboard (`lender.html`)**
-   - Displays deposit details.
-   - Shows eligible loan amount.
-   - Simulates loan approval.
-
-5. **Loan Confirmation (`loan-granted.html`)**
-   - Displays approved loan status.
-   - Confirms successful loan processing.
+[Watch Demo Video](https://your-demo-video-link-here)
 
 ---
+
+##  What This Prototype Demonstrates
+
+- Warehouse-level crop data entry  
+- Generation of a digital crop deposit record  
+- Warehouse stock visibility  
+- Lender dashboard for loan approval  
+- Loan confirmation status  
+
+The prototype focuses on demonstrating **system flow and stakeholder interaction**.
+
+---
+
+##  Application Flow
+
+1. Warehouse staff enters crop details  
+2. System generates a unique deposit record  
+3. Stored crop appears in warehouse stock view  
+4. Lender views deposit details  
+5. Loan approval is simulated  
+
+---
+
+##  Technologies Used
+
+- HTML  
+- CSS  
+- JavaScript  
+
+This prototype uses client-side logic to simulate data flow between pages.
+
+---
+
+##  Purpose
+
+The objective of this prototype is to visualize how warehouse-stored crops can be digitally recorded and used to simulate post-harvest credit access, without requiring direct farmer interaction with digital systems.
+
+
